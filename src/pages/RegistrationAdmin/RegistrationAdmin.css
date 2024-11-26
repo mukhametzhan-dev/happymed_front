@@ -1,0 +1,52 @@
+.registrationAdminContainer {
+    padding: 50px;
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .registrationAdminForm {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1890ff;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    color: #555555;
+  }
+  
+  .controller {
+    width: 100%;
+    margin-top: 5px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .identificationRow {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  
+  .verifyButton {
+    display: flex;
+    align-items: center;
+  }
+  
+  .termsCheckbox {
+    margin-top: 10px;
+  }
+  
+  .password-strength {
+    margin-top: 10px;
+  }

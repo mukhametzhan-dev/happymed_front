@@ -1,0 +1,23 @@
+.weekly-schedule {
+    padding: 20px;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+  }
+  
+  .cell {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .available {
+    background-color: #52c41a;
+  }
+  
+  .unavailable {
+    background-color: #f5222d;
+  }
+  
+  .saved-schedule {
+    margin-top: 20px;
+  }

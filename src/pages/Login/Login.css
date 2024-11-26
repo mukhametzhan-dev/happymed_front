@@ -1,0 +1,25 @@
+.loginForm {
+  width: 100%;
+  background-color: #f4f8fc;
+  margin: 125px 0 28px 0;
+  padding: 44px 34px;
+  gap: 14px;
+  border-radius: 20px;
+}
+.controller {
+  width: 100%;
+}
+.title {
+  font-size: 22px;
+  font-weight: 500;
+}
+.subtitle {
+  font-size: 16px;
+}
+.forgot {
+  color: #00c3b5;
+  text-decoration: underline;
+}
+.text {
+  color: #343b48;
+}

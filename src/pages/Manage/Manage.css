@@ -1,0 +1,29 @@
+.manage-container {
+    padding: 30px;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+  }
+  
+  .role-select {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .search-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .show-all-button {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .user-list {
+    margin-top: 20px;
+  }

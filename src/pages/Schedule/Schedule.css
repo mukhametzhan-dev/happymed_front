@@ -1,0 +1,40 @@
+.schedule-container {
+    padding: 30px;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+  }
+  
+  .days-checkbox {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .time-slots {
+    margin-bottom: 20px;
+  }
+  
+  .day-time-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .day-label {
+    width: 100px;
+    font-weight: bold;
+  }
+  
+  .time-picker {
+    flex: 1;
+  }
+  
+  .schedule-button {
+    width: 100%;
+    margin-bottom: 30px; /* Added margin for spacing */
+  }
+  
+  .saved-schedule {
+    margin-top: 20px;
+  }

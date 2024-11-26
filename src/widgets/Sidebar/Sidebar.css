@@ -1,0 +1,12 @@
+.menu {
+  height: 100%;
+
+  overflow-y: auto;
+}
+.brand {
+  color: black;
+  background-color: white;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 8px 16px;
+}

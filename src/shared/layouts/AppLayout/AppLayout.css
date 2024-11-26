@@ -1,0 +1,12 @@
+.appLayout {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  padding: 1.5rem;
+}
+
+.contentWrapper.sidebarCollapsed {
+  margin-left: 80px;
+}
