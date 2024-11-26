@@ -1,27 +1,58 @@
+/* Registration.css */
+
+/* Base styles */
 .registrationForm {
-  width: 100%;
-  background-color: #f4f8fc;
-  margin: 0px 0 28px 0;
-  padding: 44px 34px;
-  border-radius: 20px;
+  padding: 20px;
 }
+
 .controller {
   width: 100%;
 }
+
 .title {
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 32px;
 }
+
 .subtitle {
+  font-size: 18px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .registrationForm {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  .ant-input-group-compact > * {
+    width: 100% !important;
+    display: block;
+    margin-bottom: 8px;
+  }
+}
+.controller input,
+.controller .ant-input,
+.controller .ant-select-selector {
+  height: 40px;
   font-size: 16px;
 }
-.forgot {
-  color: #00c3b5;
-  text-decoration: underline;
-}
-.text {
-  color: #343b48;
-}
-.error {
-  color: #e74c3c;
+
+@media (max-width: 768px) {
+  .controller input,
+  .controller .ant-input,
+  .controller .ant-select-selector {
+    height: 36px;
+    font-size: 14px;
+  }
 }
