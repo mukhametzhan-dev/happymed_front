@@ -82,7 +82,7 @@ export const Registration = () => {
 
   return (
     <Row justify="center" style={{ padding: '50px' }}>
-      <Col span={6}>
+      <Col xs={24} sm={20} md={16} lg={12} span={6}>
         <Row className="registrationForm" gutter={[0, 12]}>
           <div>
             <span className="title">Create a MyMedic account</span>
@@ -444,15 +444,15 @@ export const Registration = () => {
           <hr />
         </Row>
         <hr />
-        <Row gutter={[0, 12]}>
-          <Col span={24}>
+        <Row gutter={[16, 8]}>
+          <Col xs={24} sm={12} span={24}>
             <span>
               <a href="#" className="text">
                 Already have a MyMedic account?
               </a>
             </span>
           </Col>
-          <Col span={24}>
+          <Col xs={24} sm={12} span={24}>
             <Button
               color="default"
               variant="outlined"
