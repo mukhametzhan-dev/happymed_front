@@ -1,0 +1,54 @@
+/* Profile.css */
+
+/* Base styles */
+.profile-container {
+    padding: 30px;
+  }
+  
+  .profile-header {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .profile-details {
+    padding: 20px;
+  }
+  
+  .profile-item {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .profile-container {
+      padding: 15px;
+    }
+  
+    .profile-header {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .profile-details {
+      padding: 10px;
+    }
+  
+    .profile-item {
+      font-size: 14px;
+    }
+  }
+/* Profile.css */
+
+@media (max-width: 768px) {
+    .ant-input,
+    .ant-btn {
+      width: 100%;
+      font-size: 14px;
+    }
+  
+    .ant-avatar {
+      width: 150px;
+      height: 150px;
+    }
+  }

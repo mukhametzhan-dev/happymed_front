@@ -2,7 +2,7 @@ import { Layout, Menu, Row } from 'antd';
 import { IconContext } from 'react-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SIDEBAR_WIDTH } from './../../shared/config/theme/themeConfig/themeConfig';
-import { sidebarItems, doctorSidebarItems, adminSidebarItems, collapsedSidebarItems } from './routes';
+import { sidebarItems, doctorSidebarItems, adminSidebarItems, collapsedSidebarItems, patientSidebarItems } from './routes';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import './Sidebar.css';
@@ -44,6 +44,8 @@ export const Sidebar = () => {
               ? doctorSidebarItems
               : userRole === 'administrator'
               ? adminSidebarItems
+              : userRole !== 'doctor' && userRole !== 'administrator'
+              ? patientSidebarItems
               : sidebarItems
           }
           onClick={({ key }) => {

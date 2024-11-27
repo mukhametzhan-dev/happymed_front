@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Col, Row, message, TimePicker, Checkbox, List, Typography } from 'antd';
+import { Button, Col, Row, message, TimePicker, Checkbox, Typography } from 'antd';
 import axios from 'axios';
 import dayjs, { Dayjs } from 'dayjs';
 import './Schedule.css';
@@ -14,8 +14,12 @@ const daysOfWeek = [
   { label: 'Thursday', value: 'thursday' },
   { label: 'Friday', value: 'friday' },
   { label: 'Saturday', value: 'saturday' },
-  { label: 'Sunday', value: 'sunday' },
+  // { label: 'Sunday', value: 'sunday' },
 ];
+
+interface ScheduleData {
+  [key: string]: [string, string]; // Start and end times as ISO strings for each day
+}
 
 interface TimeSlots {
   [key: string]: [Dayjs | null, Dayjs | null];
@@ -35,6 +39,7 @@ interface ScheduleResponse {
 }
 
 export const Schedule = () => {
+  const [transformedScheduleData, setTransformedScheduleData] = useState<ScheduleData>({});
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [timeSlots, setTimeSlots] = useState<TimeSlots>({});
   const [loading, setLoading] = useState<boolean>(false);
@@ -78,6 +83,21 @@ export const Schedule = () => {
         console.log('Existing schedule:', existingSchedule);
         setTimeSlots(initialTimeSlots);
         setSavedSchedule(existingSchedule);
+
+        // Transform savedSchedule into scheduleData
+        const scheduleData: ScheduleData = {};
+
+        existingSchedule.schedule.forEach((item) => {
+          const day = item.day.toLowerCase();
+          // Assuming times are in "HH:mm" format
+          const date = dayjs().startOf('day'); // Reference date
+          const startTime = dayjs(`${date.format('YYYY-MM-DD')}T${item.time[0]}`, 'YYYY-MM-DDTHH:mm');
+          const endTime = dayjs(`${date.format('YYYY-MM-DD')}T${item.time[1]}`, 'YYYY-MM-DDTHH:mm');
+
+          scheduleData[day] = [startTime.toISOString(), endTime.toISOString()];
+        });
+
+        setTransformedScheduleData(scheduleData);
       }
     } catch (error) {
       console.error('Error fetching existing schedule:', error);
@@ -173,6 +193,22 @@ export const Schedule = () => {
         message.success('Schedule saved successfully.');
         // Update the saved schedule display
         setSavedSchedule(response.data);
+
+        // Transform the new saved schedule into scheduleData
+        const scheduleData: ScheduleData = {};
+
+        response.data.schedule.forEach((item) => {
+          const day = item.day.toLowerCase();
+          // Assuming times are in "HH:mm" format
+          const date = dayjs().startOf('day'); // Reference date
+          const startTime = dayjs(`${date.format('YYYY-MM-DD')}T${item.time[0]}`, 'YYYY-MM-DDTHH:mm');
+          const endTime = dayjs(`${date.format('YYYY-MM-DD')}T${item.time[1]}`, 'YYYY-MM-DDTHH:mm');
+
+          scheduleData[day] = [startTime.toISOString(), endTime.toISOString()];
+        });
+
+        setTransformedScheduleData(scheduleData);
+
         // Optionally, reset the form
         // setSelectedDays([]);
         // setTimeSlots({});
@@ -189,6 +225,16 @@ export const Schedule = () => {
 
   const capitalizeFirstLetter = (word: string) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
+  const disabledHours = () => {
+    const hours = [];
+    for (let i = 0; i < 24; i++) {
+      if (i < 6 || i > 21) {
+        hours.push(i);
+      }
+    }
+    return hours;
   };
 
   return (
@@ -208,16 +254,16 @@ export const Schedule = () => {
                 {capitalizeFirstLetter(day)}:
               </Text>
               <TimePicker.RangePicker
-  format="HH:mm"
-  minuteStep={30}
-  value={[
-    timeSlots[day]?.[0],
-    timeSlots[day]?.[1],
-  ]}
-  onChange={(timeRange) => handleTimeChange(day, timeRange)}
-  className="time-picker"
-/>
-
+                format="HH:mm"
+                minuteStep={30}
+                value={[
+                  timeSlots[day]?.[0],
+                  timeSlots[day]?.[1],
+                ]}
+                onChange={(timeRange) => handleTimeChange(day, timeRange)}
+                className="time-picker"
+                disabledHours={disabledHours}
+              />
             </div>
           ))}
         </div>
@@ -235,8 +281,9 @@ export const Schedule = () => {
           <div className="saved-schedule">
             <Title level={3}>Your Saved Schedule</Title>
 
-            <WeeklySchedule  />
-            {/* <List
+            <WeeklySchedule  scheduleData={transformedScheduleData} />
+            {/* You can uncomment this if you want to display the list as well
+            <List
               bordered
               dataSource={savedSchedule.schedule}
               renderItem={(item) => (

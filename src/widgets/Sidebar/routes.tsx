@@ -1,5 +1,5 @@
 import { AiOutlineUnorderedList } from 'react-icons/ai';
-import { ScheduleOutlined, UserOutlined } from '@ant-design/icons';
+import { CheckSquareOutlined, HistoryOutlined, LogoutOutlined, ReconciliationOutlined, ScheduleOutlined, UserOutlined } from '@ant-design/icons';
 import { privateRoutesMap } from '../../shared/navigation';
 import React from 'react';
 import { MenuProps } from 'antd';
@@ -19,6 +19,39 @@ export const sidebarItems: MenuItem[] = [
         label: 'My profile',
         icon: <AiOutlineUnorderedList />,
       },
+      {
+        key: privateRoutesMap.logout,
+        type: 'item',
+        label: 'Logout',
+        icon:<LogoutOutlined />,
+        onClick: () => {
+          localStorage.removeItem('user');
+          window.location.href = '/';
+        }
+      }
+    ],
+  },
+];
+
+export const patientSidebarItems: MenuItem[] = [
+  ...sidebarItems,
+  {
+    key: 'appointment',
+    type: 'group',
+    label: 'Booking options',
+    children: [
+      {
+        key: privateRoutesMap.appointment,
+        type: 'item',
+        label: 'Make an appointment',
+        icon: <CheckSquareOutlined />,
+      },
+      {
+        key: privateRoutesMap.appointments,
+        type: 'item',
+        label: 'Appointments',
+        icon: <HistoryOutlined />, 
+      }
     ],
   },
 ];
@@ -38,6 +71,21 @@ export const doctorSidebarItems: MenuItem[] = [
       },
     ],
   },
+
+  {
+    key: 'myapps',
+    type: 'group',
+    label: 'Appointments',
+    children: [
+
+      {
+        key: privateRoutesMap.myapps,
+        type: 'item',
+        label: 'Appointments',
+        icon: <ReconciliationOutlined /> ,
+      },
+    ],
+  }
 ];
 
 export const adminSidebarItems: MenuItem[] = [

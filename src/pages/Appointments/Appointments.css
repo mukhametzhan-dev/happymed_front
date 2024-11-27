@@ -1,0 +1,52 @@
+/* Appointments.css */
+
+.appointments-container {
+    padding: 50px;
+  }
+  
+  .appointments-list {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .appointments-list .ant-list-item {
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .appointments-list .ant-list-item:last-child {
+    border-bottom: none;
+  }
+  
+  .appointments-list .ant-list-item-meta-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .appointments-list .ant-list-item-meta-description {
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .appointments-container {
+      padding: 15px;
+    }
+  
+    .appointments-list {
+      padding: 10px;
+    }
+  
+    .appointments-list .ant-list-item {
+      padding: 15px;
+    }
+  
+    .appointments-list .ant-list-item-meta-title {
+      font-size: 14px;
+    }
+  
+    .appointments-list .ant-list-item-meta-description {
+      font-size: 12px;
+    }
+  }

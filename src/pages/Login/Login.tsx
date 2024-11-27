@@ -36,6 +36,8 @@ export const Login = () => {
         appLocalStorage.setItem('accessToken', response.data.token);
         appSessionStorage.setTokenValid();
         appLocalStorage.setItem('user', response.data.user);
+        // appLocalStorage.setItem
+        console.log('User:', response.data.user);
         navigate('/home');
       } else {
         message.error('Login failed: ' + response.data.error);

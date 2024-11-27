@@ -7,6 +7,10 @@ import React from 'react';
 import { Profile } from '../../../pages/Profile/Profile';
 import { Schedule } from '../../../pages/Schedule/Schedule';
 import Manage from '../../../pages/Manage/Manage';
+// 
+import { Appointment } from '../../../pages/Appointment/Appointment';
+import { Appointments } from '../../../pages/Appointments/Appointments';
+import MyAppointments from '../../../pages/MyAppointments/MyAppointments';
 
 export const privateRoutes = [
   {
@@ -32,6 +36,20 @@ export const privateRoutes = [
         path: privateRoutesMap.manage,
         element: <Manage />,
       },
+      {
+        path: privateRoutesMap.appointment,
+        element: <Appointment />,
+      },
+      {
+        path: privateRoutesMap.appointments,
+        element: <Appointments />,
+
+      },
+     {
+      path: privateRoutesMap.myapps,
+      element: <MyAppointments />,
+     } 
+      
     ],
   },
 ];
