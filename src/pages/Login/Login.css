@@ -23,3 +23,24 @@
 .text {
   color: #343b48;
 }
+@media (max-width: 768px) {
+  .loginForm {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .controller {
+    font-size: 14px;
+  }
+
+  .error {
+    font-size: 10px;
+  }
+}

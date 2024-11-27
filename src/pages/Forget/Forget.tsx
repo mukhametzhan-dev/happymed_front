@@ -46,8 +46,8 @@ const Forget = () => {
   };
 
   return (
-    <Row justify="center">
-      <Col span={6}>
+    <Row justify="center" style={{ padding: '20px' }}>
+      <Col xs={24} sm={20} md={16} lg={12} xl={8}>
         <Row className="forgotPasswordForm" gutter={[0, 17]}>
           <div>
             <span className="title">Forgot Password</span>

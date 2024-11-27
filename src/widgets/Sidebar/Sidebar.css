@@ -10,3 +10,27 @@
   font-weight: 500;
   padding: 8px 16px;
 }
+
+/* Sidebar.css */
+
+.menu-button {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.sidebar-desktop {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  .sidebar-desktop {
+    display: none;
+  }
+}

@@ -1,10 +1,7 @@
-import {Button, Checkbox, Col, Input, message, Row, Typography} from 'antd';
+import { Button, Checkbox, Col, Input, message, Row, Typography } from 'antd';
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import axios  from 'axios';
-
-
-
+import axios from 'axios';
 import './Login.css';
 import { appLocalStorage } from '../../shared/utils/appLocalStorage/appLocalStorage';
 import { appSessionStorage } from '../../shared/utils/appSessionStorage/appSessionStorage';
@@ -12,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [keepMeLoggedIn, setKeepMeLoggedIn] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const {
     control,
@@ -20,23 +17,16 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
 
-  // const onSubmit = (data) => {
-  //   console.log(data); // Log form data here
-  //   appLocalStorage.setItem('acesstoken', 'sdasadsad');
-  //   appSessionStorage.setTokenValid();
-  //   navigate('/home');
-  // };
   const onSubmit = async (data) => {
     console.log(data);
     try {
       const response = await axios.post('http://127.0.0.1:5000/login', data);
       console.log('Login response:', response.data);
-  
+
       if (response.data.status === 'success') {
         appLocalStorage.setItem('accessToken', response.data.token);
         appSessionStorage.setTokenValid();
         appLocalStorage.setItem('user', response.data.user);
-        // appLocalStorage.setItem
         console.log('User:', response.data.user);
         navigate('/home');
       } else {
@@ -51,9 +41,10 @@ export const Login = () => {
       }
     }
   };
+
   return (
-    <Row justify="center">
-      <Col span={6}>
+    <Row justify="center" style={{ padding: '20px' }}>
+      <Col xs={24} sm={20} md={16} lg={12} xl={8}>
         <Row className="loginForm" gutter={[0, 17]}>
           <div>
             <span className="title">Patient log in</span>

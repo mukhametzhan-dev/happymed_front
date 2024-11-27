@@ -1,4 +1,5 @@
-import { Layout, Menu, Row } from 'antd';
+import { Layout, Menu, Row, Drawer, Button } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
 import { IconContext } from 'react-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SIDEBAR_WIDTH } from './../../shared/config/theme/themeConfig/themeConfig';
@@ -9,6 +10,7 @@ import './Sidebar.css';
 
 export const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [userRole, setUserRole] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,36 +28,72 @@ export const Sidebar = () => {
     }
   }, []);
 
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
+  const handleMenuClick = ({ key }) => {
+    navigate(key);
+    setVisible(false); // Close the drawer after navigation
+  };
+
+  const menuItems =
+    userRole === 'doctor'
+      ? doctorSidebarItems
+      : userRole === 'administrator'
+      ? adminSidebarItems
+      : userRole !== 'doctor' && userRole !== 'administrator'
+      ? patientSidebarItems
+      : sidebarItems;
+
   return (
-    <Layout.Sider
-      width={SIDEBAR_WIDTH}
-      collapsed={collapsed}
-      onCollapse={(collapsed) => setCollapsed(collapsed)}
-    >
-      <Row className="brand">HappyMed</Row>
-      <IconContext.Provider value={{ size: '16' }}>
-        <Menu
-          mode="inline"
-          className="menu"
-          items={
-            collapsed
-              ? collapsedSidebarItems
-              : userRole === 'doctor'
-              ? doctorSidebarItems
-              : userRole === 'administrator'
-              ? adminSidebarItems
-              : userRole !== 'doctor' && userRole !== 'administrator'
-              ? patientSidebarItems
-              : sidebarItems
-          }
-          onClick={({ key }) => {
-            console.log('key:', key);
-            navigate(key);
-          }}
-          selectedKeys={[pathname]}
-          defaultOpenKeys={[pathname]}
-        />
-      </IconContext.Provider>
-    </Layout.Sider>
+    <>
+      <Button
+        type="primary"
+        icon={<MenuOutlined />}
+        onClick={showDrawer}
+        className="menu-button"
+      />
+      <Drawer
+        title="HappyMed"
+        placement="left"
+        onClose={onClose}
+        visible={visible}
+        width={SIDEBAR_WIDTH}
+      >
+        <IconContext.Provider value={{ size: '16' }}>
+          <Menu
+            mode="inline"
+            className="menu"
+            items={menuItems}
+            onClick={handleMenuClick}
+            selectedKeys={[pathname]}
+            defaultOpenKeys={[pathname]}
+          />
+        </IconContext.Provider>
+      </Drawer>
+      <Layout.Sider
+        width={SIDEBAR_WIDTH}
+        collapsed={collapsed}
+        onCollapse={(collapsed) => setCollapsed(collapsed)}
+        className="sidebar-desktop"
+      >
+        <Row className="brand">HappyMed</Row>
+        <IconContext.Provider value={{ size: '16' }}>
+          <Menu
+            mode="inline"
+            className="menu"
+            items={menuItems}
+            onClick={handleMenuClick}
+            selectedKeys={[pathname]}
+            defaultOpenKeys={[pathname]}
+          />
+        </IconContext.Provider>
+      </Layout.Sider>
+    </>
   );
 };

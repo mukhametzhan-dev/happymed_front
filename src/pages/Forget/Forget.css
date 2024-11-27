@@ -23,3 +23,68 @@
 .text {
     color: #343b48;
 }
+/* Schedule.css */
+
+/* Base styles */
+.schedule-container {
+    padding: 30px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .days-checkbox {
+    margin-bottom: 20px;
+  }
+  
+  .time-slots {
+    margin-bottom: 20px;
+  }
+  
+  .day-time-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .day-label {
+    width: 100px;
+    font-weight: bold;
+  }
+  
+  .time-picker {
+    flex: 1;
+  }
+  
+  .schedule-button {
+    width: 100%;
+  }
+  
+  .saved-schedule {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .schedule-container {
+      padding: 15px;
+    }
+  
+    .day-time-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .day-label {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  
+    .time-picker {
+      width: 100%;
+    }
+  }

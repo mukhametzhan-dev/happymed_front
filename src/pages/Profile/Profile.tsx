@@ -15,6 +15,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { CiUser, CiEdit } from 'react-icons/ci';
 import { FaFileUpload } from 'react-icons/fa';
+import './Profile.css';
+
 const { Title, Text } = Typography;
 
 export const Profile = () => {
@@ -123,7 +125,7 @@ export const Profile = () => {
 
   return (
     <Row justify="center" style={{ padding: '30px' }}>
-      <Col span={24}>
+      <Col xs={24} sm={20} md={16} lg={12}>
         <div className="profile-container">
           <Row className="profile-header">
             <Col span={24}>
@@ -142,22 +144,16 @@ export const Profile = () => {
             </Col>
             <Col span={24}>
               <Row>
-                <Col span={8}>
-                  <Row
-                    align="middle"
-                    justify="center"
-                    style={{ height: '100%' }}
-                  >
-                    <Avatar
-                      size={200}
-                      icon={<CiUser />}
-                      src={avatarUrl}
-                      style={{ marginRight: '20px' }}
-                    />
-                  </Row>
+                <Col xs={24} md={8} className="avatar-container">
+                  <Avatar
+                    size={200}
+                    icon={<CiUser />}
+                    src={avatarUrl}
+                    style={{ marginRight: '20px' }}
+                  />
                 </Col>
 
-                <Col span={16}>
+                <Col xs={24} md={16}>
                   <div className="profile-details">
                     <Title level={3}>
                       {user?.first_name} {user?.last_name}
