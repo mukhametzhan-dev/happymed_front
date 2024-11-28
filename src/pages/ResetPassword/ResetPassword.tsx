@@ -23,7 +23,7 @@ const ResetPassword = () => {
   useEffect(() => {
     const validateToken = async () => {
       try {
-        const response = await axios.get(`http://ant-steady-hugely.ngrok-free.app/reset-password/${decodedToken}`);
+        const response = await axios.get(`https://ant-steady-hugely.ngrok-free.app/reset-password/${decodedToken}`);
         if (response.status === 200) {
           setIsTokenValid(true);
           console.log('Token is valid');
@@ -38,7 +38,7 @@ const ResetPassword = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post(`http://ant-steady-hugely.ngrok-free.app/reset-password/${decodedToken}`, data);
+      const response = await axios.post(`https://ant-steady-hugely.ngrok-free.app/reset-password/${decodedToken}`, data);
       if (response.status === 200) {
         message.success('Your password has been reset successfully.');
         navigate('/login'); // Redirect to login page
