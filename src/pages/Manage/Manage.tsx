@@ -22,7 +22,7 @@ interface User {
   const fetchUsers = async (role: string, query: string = '') => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://ant-steady-hugely.ngrok-free.app/get_${role}?query=${query}`);
+      const response = await axios.get(`https://ant-steady-hugely.ngrok-free.app/get_${role}?query=${query}`);
       if (response.status === 200) {
         setUsers(response.data);
       } else {
