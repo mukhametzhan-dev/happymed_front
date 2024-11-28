@@ -65,7 +65,7 @@ const WeeklySchedule: React.FC<WeeklyScheduleProps> = ({ emailOfDoctor, onTimeSl
 
   const fetchExistingSchedule = async (email: string) => {
     try {
-      const response = await axios.get(`http://ant-steady-hugely.ngrok-free.app/get_schedule?email=${email}`);
+      const response = await axios.get(`https://ant-steady-hugely.ngrok-free.app/get_schedule?email=${email}`);
       if (response.status === 200 && response.data.schedule) {
         const existingSchedule: ScheduleResponse = response.data;
         const existingAvailability: { [key: string]: boolean } = {};
