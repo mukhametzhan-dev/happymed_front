@@ -39,7 +39,7 @@ export const Appointments = () => {
 
   const fetchAppointments = async (userId: number) => {
     try {
-      const response = await axios.get(`http://localhost:5000/my_appointments?user_id=${userId}`);
+      const response = await axios.get(`http://ant-steady-hugely.ngrok-free.app/my_appointments?user_id=${userId}`);
       if (response.status === 200) {
         setAppointments(response.data.appointments);
       } else {
