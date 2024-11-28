@@ -79,7 +79,7 @@ export const Profile = () => {
         };
 
         const response = await axios.put(
-          'http://ant-steady-hugely.ngrok-free.app/edit_profile',
+          'https://ant-steady-hugely.ngrok-free.app/edit_profile',
           updatedData,
           {
             headers: {
