@@ -58,7 +58,7 @@ const AppointmentScheduler = ({ doctorEmail }) => {
     try {
       // Submit the appointmentData as JSON
       const response = await axios.post(
-        'http://ant-steady-hugely.ngrok-free.app/make_appointment',
+        'https://ant-steady-hugely.ngrok-free.app/make_appointment',
         appointmentData,
         {
           headers: {
