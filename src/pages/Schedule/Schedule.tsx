@@ -67,7 +67,7 @@ export const Schedule = () => {
   // Function to fetch existing schedule from backend
   const fetchExistingSchedule = async (email: string) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:5000/get_schedule?email=${email}`);
+      const response = await axios.get(`http://ant-steady-hugely.ngrok-free.app/get_schedule?email=${email}`);
       if (response.status === 200 && response.data.schedule) {
         const existingSchedule: ScheduleResponse = response.data;
         const days = existingSchedule.schedule.map((item: any) => item.day);
@@ -181,7 +181,7 @@ export const Schedule = () => {
     try {
       console.log('Payload:', payload);
       const response = await axios.post(
-        'http://127.0.0.1:5000/save_schedule',
+        'http://ant-steady-hugely.ngrok-free.app/save_schedule',
         payload,
         {
           headers: {
