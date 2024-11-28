@@ -37,7 +37,8 @@ export const Registration = () => {
         }
       }
 
-      const response = await axios.post('http://ant-steady-hugely.ngrok-free.app/register', formData, {
+      const response = await axios.post('https://ant-steady-hugely.ngrok-free.app/register', formData, {
+        
         headers: {
           'Content-Type': 'multipart/form-data',
         },
