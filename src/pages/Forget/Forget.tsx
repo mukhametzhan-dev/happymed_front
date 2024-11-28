@@ -26,7 +26,7 @@ const Forget = () => {
 
     console.log(data);
     try {
-      const response = await axios.post('http://ant-steady-hugely.ngrok-free.app/forgot-password', data);
+      const response = await axios.post('https://ant-steady-hugely.ngrok-free.app/forgot-password', data);
       console.log('Forgot Password response:', response.data);
 
       if (response.data.message === 'Password reset email sent') {
