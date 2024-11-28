@@ -36,7 +36,7 @@ const RegistrationAdmin = () => {
     }
 
     try {
-      const response = await axios.post('http://ant-steady-hugely.ngrok-free.app/register_admin', data, {
+      const response = await axios.post('https://ant-steady-hugely.ngrok-free.app/register_admin', data, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -62,7 +62,7 @@ const RegistrationAdmin = () => {
     setVerifying(true);
     try {
       const response = await axios.get(
-        `http://ant-steady-hugely.ngrok-free.app/verify_id?identificationNumber=${idNumber}`
+        `https://ant-steady-hugely.ngrok-free.app/verify_id?identificationNumber=${idNumber}`
       );
 
       if (response.data.status === 'verified') {
