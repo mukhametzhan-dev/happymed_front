@@ -37,7 +37,7 @@ export const Registration = () => {
         }
       }
 
-      const response = await axios.post('http://127.0.0.1:5000/register', formData, {
+      const response = await axios.post('http://ant-steady-hugely.ngrok-free.app/register', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
