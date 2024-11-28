@@ -43,7 +43,7 @@ export const MyAppointments: React.FC = () => {
 
   const fetchAppointments = async (email: string) => {
     try {
-      const response = await axios.get(`http://ant-steady-hugely.ngrok-free.app/get_appointments_for_doctor?email=${email}`);
+      const response = await axios.get(`https://ant-steady-hugely.ngrok-free.app/get_appointments_for_doctor?email=${email}`);
       if (response.status === 200) {
         setAppointments(response.data.appointments);
       } else {
@@ -57,7 +57,7 @@ export const MyAppointments: React.FC = () => {
 
   const handleCompleteAppointment = async (appointmentId: number) => {
     try {
-      const response = await axios.post(`http://ant-steady-hugely.ngrok-free.app/complete_appointment`, { appointment_id: appointmentId });
+      const response = await axios.post(`https://ant-steady-hugely.ngrok-free.app/complete_appointment`, { appointment_id: appointmentId });
       if (response.status === 200) {
         message.success('Appointment completed successfully.');
         fetchAppointments(doctorEmail!);
