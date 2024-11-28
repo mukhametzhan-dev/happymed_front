@@ -63,7 +63,7 @@ export const Appointment = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get('http://ant-steady-hugely.ngrok-free.app/doctors');
+        const response = await axios.get('https://ant-steady-hugely.ngrok-free.app/doctors');
         if (response.status === 200) {
           setDoctors(response.data);
         } else {
@@ -100,7 +100,7 @@ export const Appointment = () => {
 
     console.log(appointmentData);
     try {
-      const response = await axios.post('http://http://ant-steady-hugely.ngrok-free.app/make_appointment', appointmentData);
+      const response = await axios.post('https://ant-steady-hugely.ngrok-free.app/make_appointment', appointmentData);
       if (response.status === 200 || response.status === 201) {
         message.success('Appointment made successfully');
         navigate('/appointments');
