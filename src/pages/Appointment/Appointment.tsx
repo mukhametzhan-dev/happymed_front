@@ -50,7 +50,7 @@ export const Appointment = () => {
         const parsedUser = JSON.parse(storedUser);
         console.log(parsedUser);
         setPatientId(parsedUser.user_id);
-        console.log("Patient iD: " + patientId);
+        console.log("Patient ID: " + parsedUser.user_id);
       } catch (error) {
         console.error('Error parsing user data from localStorage:', error);
         message.error('Failed to retrieve user information.');
@@ -64,8 +64,10 @@ export const Appointment = () => {
     const fetchDoctors = async () => {
       try {
         const response = await axios.get('https://ant-steady-hugely.ngrok-free.app/doctors');
-        if (response.status === 200) {
+        if (response.status === 200 && Array.isArray(response.data)) {
           setDoctors(response.data);
+          console.log("doctors set");
+          console.log(response.data);
         } else {
           message.error('Failed to fetch doctors.');
         }
@@ -142,7 +144,7 @@ export const Appointment = () => {
                       return false;
                     }}
                   >
-                    {doctors.map((doctor) => (
+                    {Array.isArray(doctors) && doctors.map((doctor) => (
                       <Option key={doctor.doctor_id} value={doctor.doctor_id}>
                         {doctor.first_name} {doctor.last_name} - {doctor.specialization.spec_name}
                       </Option>
