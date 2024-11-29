@@ -142,7 +142,7 @@ export const Appointment = () => {
                       return false;
                     }}
                   >
-                    {Array.isArray(doctors) && doctors.map((doctor) => (
+                    {doctors.map((doctor) => (
                       <Option key={doctor.doctor_id} value={doctor.doctor_id}>
                         {doctor.first_name} {doctor.last_name} - {doctor.specialization.spec_name}
                       </Option>
