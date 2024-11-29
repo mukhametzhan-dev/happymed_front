@@ -109,7 +109,7 @@ export const Appointment = () => {
       }
     } catch (error) {
       console.error('Error making appointment:', error);
-      message.error('You did not confirmed a time slot'); // not sleectedtimeslot
+      message.error('You did not confirm a time slot'); // not selected timeslot
     }
   };
 
@@ -133,9 +133,11 @@ export const Appointment = () => {
                     optionFilterProp="children"
                     onChange={handleDoctorChange}
                     filterOption={(input, option) => {
-                      const children = option?.children;
-                      if (typeof children === 'string') {
-                        return children.toLowerCase().includes(input.toLowerCase());
+                      const doctor = doctors.find(doc => doc.doctor_id === option?.value);
+                      if (doctor) {
+                        const name = `${doctor.first_name} ${doctor.last_name}`.toLowerCase();
+                        const specialization = doctor.specialization.spec_name.toLowerCase();
+                        return name.includes(input.toLowerCase()) || specialization.includes(input.toLowerCase());
                       }
                       return false;
                     }}
@@ -190,4 +192,5 @@ export const Appointment = () => {
     </Row>
   );
 };
+
 export default Appointment;
